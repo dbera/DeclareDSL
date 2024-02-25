@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.esi.nl/comma/expressions/Expressions"
+			class = "nl.esi.comma.expressions.expressions.ExpressionsPackage"
+			genModel = "model/generated/Expressions.genmodel" />
+	</extension>
+</plugin>

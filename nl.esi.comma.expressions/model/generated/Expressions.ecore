@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="expressions" nsURI="http://www.esi.nl/comma/expressions/Expressions"
+    nsPrefix="expressions">
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionNot" eSuperTypes="#//Expression #//ExpressionUnary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionMinus" eSuperTypes="#//Expression #//ExpressionUnary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionPlus" eSuperTypes="#//Expression #//ExpressionUnary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBracket" eSuperTypes="#//Expression #//ExpressionUnary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionConstantBool" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionConstantInt" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionConstantString" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionEnumLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionVariable" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionAny"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionFunctionCall">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionQuantifier" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantifier" eType="#//QUANTIFIER"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="iterator" eType="#//Variable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeAnnotation" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pair">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="QUANTIFIER">
+    <eLiterals name="EXISTS" literal="exists"/>
+    <eLiterals name="FORALL" value="1" literal="forAll"/>
+    <eLiterals name="DELETE" value="2" literal="delete"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBinary" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionUnary" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionAnd" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionOr" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionEqual" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionNEqual" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionGeq" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionGreater" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionLeq" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionLess" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionAddition" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionSubtraction" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionMultiply" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionDivision" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionMaximum" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionMinimum" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionModulo" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionPower" eSuperTypes="#//Expression #//ExpressionBinary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionVector" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeAnnotation" eType="#//TypeAnnotation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionMap" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeAnnotation" eType="#//TypeAnnotation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pairs" upperBound="-1"
+        eType="#//Pair" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>
